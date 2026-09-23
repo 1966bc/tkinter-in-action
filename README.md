@@ -4,7 +4,7 @@ The source code of *wxPython in Action* rewritten in Tkinter, chapter by
 chapter and file by file — and a record of what came across, what needed
 three options where there was one, and what did not arrive at all.
 
-![Tkinter in Action](.github/social-preview.png)
+![Tkinter in Action](.github/cover.png)
 
 ## What this is
 
