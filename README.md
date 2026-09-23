@@ -29,9 +29,13 @@ original and the two are compared by their geometry - window size, and the
 position and size of every widget in it.
 
 `Chapter-11/basicgridsizer.py` returns a window of 310x85 with its children
-at (0,0), (105,0), (210,0) and so on; `wx.GridSizer` returns the same
-numbers, pixel for pixel. Where they differ, the difference is measured and
-written down rather than smoothed over.
+at (0,0), (105,0), (210,0) and so on, and `wx.GridSizer` returns the same
+numbers.
+
+The point is not that the numbers match. Rounding differs, a theme draws a
+border wider, a font is not the same font, and chasing those would teach
+nothing. The point is that when they differ by more than that, there is a
+reason, and the reason is the interesting part.
 
 ## Source
 

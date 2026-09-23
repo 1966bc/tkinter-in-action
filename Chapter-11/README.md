@@ -313,10 +313,37 @@ compared by geometry — window size, and the position and size of every widget
 in it.
 
 `basicgridsizer.py` returns a window of 310x85 with its children at (0,0),
-(105,0), (210,0) and so on; `wx.GridSizer` returns the same numbers, pixel
-for pixel. Where they differ, the difference is measured and written down.
+(105,0), (210,0) and so on, and `wx.GridSizer` returns the same numbers.
 
-The book's own code needed one repair to run at all. `blockwindow.py` line 18
-passes `(sz.width-w)/2` to `DrawText()`. In 2006 that division gave an
-integer; from Python 3.0 it gives a float, and wxPython 4 refuses it. `//`
-fixes it, and the same fix is needed in chapters 12 and 18.
+Matching numbers are not the point, and a pixel of rounding or four pixels
+of theme are not worth an argument. The numbers are a way of noticing when
+something differs by more than that - `uniform` swallowing a gap, a
+proportion dividing the surplus instead of the space - because then there is
+a mechanism underneath, and that is what these chapters are for.
+
+The book's own code needs two repairs to run properly on a machine of today.
+
+**Integer division.** `blockwindow.py` line 18 passes `(sz.width-w)/2` to
+`DrawText()`. In 2006 that division gave an integer; from Python 3.0 it gives
+a float, and wxPython 4 refuses it. `//` fixes it, and the same fix is needed
+in chapters 12 and 18.
+
+**The sizer on the frame.** Nine of these examples attach the sizer directly
+to the `wx.Frame`, which is what one did in 2006. Under GTK3 the window is
+then mapped at 298x36 whatever `Fit()` computed, and the sizer lays out again
+inside what it was given - the gap squeezed from five pixels to one, the rows
+clipped. `Fit()` is not wrong: `GetClientSize()` says 310x85 before `Show()`
+and 298x36 after it. The window manager was never told the size was a
+requirement.
+
+    self.SetSizer(sizer)
+    sizer.SetSizeHints(self)     # this line
+    self.Fit()
+
+The two examples that do not need it, `realworld.py` and
+`staticboxsizer.py`, are exactly the two that put their widgets on a
+`wx.Panel` instead of on the frame.
+
+Worth knowing for a reason beyond tidiness: without it, opening the two
+windows side by side shows a wx window that is visibly wrong, and the
+natural conclusion is that the translation is the broken one.

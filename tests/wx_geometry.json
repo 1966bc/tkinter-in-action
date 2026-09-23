@@ -1,0 +1,1332 @@
+{
+ "Chapter-11": {
+  "basicflexgridsizer": [
+   {
+    "asked": null,
+    "height": 110,
+    "title": "FlexGridSizer",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 260,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 50,
+      "name": "five",
+      "width": 150,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 260,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 85
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 85
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 260,
+      "y": 85
+     }
+    ],
+    "width": 360
+   }
+  ],
+  "basicgridsizer": [
+   {
+    "asked": null,
+    "height": 85,
+    "title": "Basic Grid Sizer",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 210,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 210,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 210,
+      "y": 60
+     }
+    ],
+    "width": 310
+   }
+  ],
+  "blockwindow": [],
+  "bordergridsizer": [
+   {
+    "asked": null,
+    "height": 145,
+    "title": "GridSizer Borders",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 135,
+      "y": 10
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 250,
+      "y": 10
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 10,
+      "y": 50
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 135,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 250,
+      "y": 50
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 110
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 135,
+      "y": 110
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 260,
+      "y": 100
+     }
+    ],
+    "width": 370
+   }
+  ],
+  "boxsizer": [
+   {
+    "asked": null,
+    "height": 120,
+    "title": "Vertical BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     }
+    ],
+    "width": 200
+   },
+   {
+    "asked": null,
+    "height": 30,
+    "title": "Horizontal BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 75,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 75,
+      "x": 75,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 75,
+      "x": 150,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 75,
+      "x": 225,
+      "y": 0
+     }
+    ],
+    "width": 300
+   },
+   {
+    "asked": null,
+    "height": 150,
+    "title": "Stretchable BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     },
+     {
+      "height": 30,
+      "name": "gets all free space",
+      "width": 200,
+      "x": 0,
+      "y": 120
+     }
+    ],
+    "width": 200
+   },
+   {
+    "asked": null,
+    "height": 210,
+    "title": "Proportional BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     },
+     {
+      "height": 30,
+      "name": "gets 1/3 of the free space",
+      "width": 200,
+      "x": 0,
+      "y": 120
+     },
+     {
+      "height": 60,
+      "name": "gets 2/3 of the free space",
+      "width": 200,
+      "x": 0,
+      "y": 150
+     }
+    ],
+    "width": 200
+   },
+   {
+    "asked": [
+     200,
+     300
+    ],
+    "height": 300,
+    "title": "Vertical BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     }
+    ],
+    "width": 200
+   },
+   {
+    "asked": [
+     200,
+     300
+    ],
+    "height": 300,
+    "title": "Horizontal BoxSizer",
+    "widgets": [
+     {
+      "height": 300,
+      "name": "one",
+      "width": 75,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 300,
+      "name": "two",
+      "width": 75,
+      "x": 75,
+      "y": 0
+     },
+     {
+      "height": 300,
+      "name": "three",
+      "width": 75,
+      "x": 150,
+      "y": 0
+     },
+     {
+      "height": 300,
+      "name": "four",
+      "width": 75,
+      "x": 225,
+      "y": 0
+     }
+    ],
+    "width": 300
+   },
+   {
+    "asked": [
+     200,
+     300
+    ],
+    "height": 300,
+    "title": "Stretchable BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     },
+     {
+      "height": 180,
+      "name": "gets all free space",
+      "width": 200,
+      "x": 0,
+      "y": 120
+     }
+    ],
+    "width": 200
+   },
+   {
+    "asked": [
+     200,
+     300
+    ],
+    "height": 300,
+    "title": "Proportional BoxSizer",
+    "widgets": [
+     {
+      "height": 30,
+      "name": "one",
+      "width": 200,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 30,
+      "name": "two",
+      "width": 200,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 30,
+      "name": "three",
+      "width": 200,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 30,
+      "name": "four",
+      "width": 200,
+      "x": 0,
+      "y": 90
+     },
+     {
+      "height": 60,
+      "name": "gets 1/3 of the free space",
+      "width": 200,
+      "x": 0,
+      "y": 120
+     },
+     {
+      "height": 120,
+      "name": "gets 2/3 of the free space",
+      "width": 200,
+      "x": 0,
+      "y": 180
+     }
+    ],
+    "width": 200
+   }
+  ],
+  "gridbagsizer": [
+   {
+    "asked": null,
+    "height": 115,
+    "title": "GridBagSizer Test",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 210,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 210,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 210,
+      "y": 60
+     },
+     {
+      "height": 85,
+      "name": "span 3 rows",
+      "width": 100,
+      "x": 315,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "span all columns",
+      "width": 415,
+      "x": 0,
+      "y": 90
+     }
+    ],
+    "width": 415
+   }
+  ],
+  "mingridsizer": [
+   {
+    "asked": null,
+    "height": 160,
+    "title": "GridSizer Test",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 155,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 310,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 55
+     },
+     {
+      "height": 50,
+      "name": "five",
+      "width": 150,
+      "x": 155,
+      "y": 55
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 310,
+      "y": 55
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 110
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 155,
+      "y": 110
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 310,
+      "y": 110
+     }
+    ],
+    "width": 460
+   }
+  ],
+  "prependgridsizer": [
+   {
+    "asked": null,
+    "height": 85,
+    "title": "Prepend Grid Sizer",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 210,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 210,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 210,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     }
+    ],
+    "width": 310
+   }
+  ],
+  "realworld": [
+   {
+    "asked": null,
+    "height": 290,
+    "title": "Real World Test",
+    "widgets": [
+     {
+      "height": 290,
+      "name": "panel",
+      "width": 407,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 133,
+      "x": 5,
+      "y": 5
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 44,
+      "x": 68,
+      "y": 54
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 280,
+      "x": 117,
+      "y": 49
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 57,
+      "x": 55,
+      "y": 86
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 280,
+      "x": 117,
+      "y": 81
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 280,
+      "x": 117,
+      "y": 113
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 102,
+      "x": 10,
+      "y": 150
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 150,
+      "x": 117,
+      "y": 145
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 50,
+      "x": 272,
+      "y": 145
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 70,
+      "x": 327,
+      "y": 145
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 45,
+      "x": 67,
+      "y": 182
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 280,
+      "x": 117,
+      "y": 177
+     },
+     {
+      "height": 17,
+      "name": "staticText",
+      "width": 42,
+      "x": 70,
+      "y": 214
+     },
+     {
+      "height": 27,
+      "name": "text",
+      "width": 280,
+      "x": 117,
+      "y": 209
+     },
+     {
+      "height": 34,
+      "name": "button",
+      "width": 85,
+      "x": 79,
+      "y": 246
+     },
+     {
+      "height": 34,
+      "name": "button",
+      "width": 85,
+      "x": 243,
+      "y": 246
+     },
+     {
+      "height": 2,
+      "name": "staticLine",
+      "width": 407,
+      "x": 0,
+      "y": 32
+     }
+    ],
+    "width": 407
+   }
+  ],
+  "resizeflexgridsizer": [
+   {
+    "asked": null,
+    "height": 110,
+    "title": "Resizing Flex Grid Sizer",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 260,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 50,
+      "name": "five",
+      "width": 150,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 260,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 85
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 85
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 260,
+      "y": 85
+     }
+    ],
+    "width": 360
+   },
+   {
+    "asked": [
+     500,
+     300
+    ],
+    "height": 300,
+    "title": "Resizing Flex Grid Sizer",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 140,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 365,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 57
+     },
+     {
+      "height": 50,
+      "name": "five",
+      "width": 150,
+      "x": 140,
+      "y": 57
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 365,
+      "y": 57
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 247
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 140,
+      "y": 247
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 365,
+      "y": 247
+     }
+    ],
+    "width": 500
+   }
+  ],
+  "resizegridsizer": [
+   {
+    "asked": null,
+    "height": 85,
+    "title": "GridSizer Resizing",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 105,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 210,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 0,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 105,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 210,
+      "y": 30
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 0,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 105,
+      "y": 60
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 210,
+      "y": 60
+     }
+    ],
+    "width": 310
+   },
+   {
+    "asked": [
+     500,
+     250
+    ],
+    "height": 250,
+    "title": "GridSizer Resizing",
+    "widgets": [
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 0,
+      "y": 55
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 199,
+      "y": 27
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 336,
+      "y": 0
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 63,
+      "y": 85
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 168,
+      "y": 85
+     },
+     {
+      "height": 80,
+      "name": "six",
+      "width": 163,
+      "x": 336,
+      "y": 85
+     },
+     {
+      "height": 80,
+      "name": "seven",
+      "width": 163,
+      "x": 0,
+      "y": 170
+     },
+     {
+      "height": 40,
+      "name": "eight",
+      "width": 163,
+      "x": 168,
+      "y": 170
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 336,
+      "y": 170
+     }
+    ],
+    "width": 500
+   }
+  ],
+  "staticboxsizer": [
+   {
+    "asked": null,
+    "height": 124,
+    "title": "StaticBoxSizer Test",
+    "widgets": [
+     {
+      "height": 124,
+      "name": "panel",
+      "width": 372,
+      "x": 0,
+      "y": 0
+     },
+     {
+      "height": 104,
+      "name": "groupBox",
+      "width": 104,
+      "x": 10,
+      "y": 10
+     },
+     {
+      "height": 25,
+      "name": "one",
+      "width": 100,
+      "x": 12,
+      "y": 29
+     },
+     {
+      "height": 25,
+      "name": "two",
+      "width": 100,
+      "x": 12,
+      "y": 58
+     },
+     {
+      "height": 25,
+      "name": "three",
+      "width": 100,
+      "x": 12,
+      "y": 87
+     },
+     {
+      "height": 104,
+      "name": "groupBox",
+      "width": 104,
+      "x": 134,
+      "y": 10
+     },
+     {
+      "height": 25,
+      "name": "four",
+      "width": 100,
+      "x": 136,
+      "y": 29
+     },
+     {
+      "height": 25,
+      "name": "five",
+      "width": 100,
+      "x": 136,
+      "y": 58
+     },
+     {
+      "height": 25,
+      "name": "six",
+      "width": 100,
+      "x": 136,
+      "y": 87
+     },
+     {
+      "height": 104,
+      "name": "groupBox",
+      "width": 104,
+      "x": 258,
+      "y": 10
+     },
+     {
+      "height": 25,
+      "name": "seven",
+      "width": 100,
+      "x": 260,
+      "y": 29
+     },
+     {
+      "height": 25,
+      "name": "eight",
+      "width": 100,
+      "x": 260,
+      "y": 58
+     },
+     {
+      "height": 25,
+      "name": "nine",
+      "width": 100,
+      "x": 260,
+      "y": 87
+     }
+    ],
+    "width": 372
+   }
+  ]
+ }
+}
