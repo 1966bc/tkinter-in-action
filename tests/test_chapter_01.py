@@ -32,8 +32,9 @@ import sys
 import tkinter as tk
 import unittest
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(HERE, "Chapter-01"))
+import chapter
+
+HERE = chapter.ROOT
 
 
 def has_display():
@@ -66,6 +67,7 @@ class TestChapter01(unittest.TestCase):
 
     def setUp(self):
         """Every test builds and destroys its own window."""
+        chapter.use("Chapter-01")
         self.app = None
 
     def tearDown(self):

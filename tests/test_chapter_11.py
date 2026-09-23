@@ -36,8 +36,9 @@ import sys
 import tkinter as tk
 import unittest
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(HERE, "Chapter-11"))
+import chapter
+
+HERE = chapter.ROOT
 
 REFERENCE = json.load(open(os.path.join(HERE, "tests", "wx_geometry.json")))
 
@@ -127,6 +128,7 @@ class TestChapter11(unittest.TestCase):
 
     def setUp(self):
         """Nothing built yet. Every test makes and destroys its own window."""
+        chapter.use("Chapter-11")
         self.app = None
 
     def tearDown(self):

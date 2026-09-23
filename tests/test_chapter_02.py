@@ -27,8 +27,9 @@ import sys
 import tkinter as tk
 import unittest
 
-HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(HERE, "Chapter-02"))
+import chapter
+
+HERE = chapter.ROOT
 
 
 def has_display():
@@ -51,6 +52,7 @@ class TestChapter02(unittest.TestCase):
         The streams are caught first: startup.py prints on purpose, and a
         test run is not where those lines are wanted.
         """
+        chapter.use("Chapter-02")
         self.app = None
         self.real_stdout = sys.stdout
         self.real_stderr = sys.stderr
