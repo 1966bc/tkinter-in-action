@@ -6,8 +6,11 @@ The rules this code is written by.
 
 - **English in the code**: identifiers, comments, docstrings, interface.
 - **PEP 8**: 4 spaces, lines up to 100 columns, `lower_case_with_underscores`
-  for functions and variables, `CapWords` for classes. File names follow the
-  same rule: `bad_example.py`, not `badExample.py`.
+  for functions and variables, `CapWords` for classes. File names would
+  follow the same rule, and here they do not: a translated file keeps the
+  name the book gave it, `badExample.py` and `customEvent.py` included. The
+  mapping to the original is worth more than the spelling, because it is
+  what makes a missing file countable.
 - **Böhm-Jacopini**: only sequence, `if`, loops and assignments. One exit per
   function: no `return` in the middle, no `break`/`continue`, no
   `x if condition else y`. `raise` is allowed, for real errors only.

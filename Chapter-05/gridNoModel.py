@@ -1,82 +1,75 @@
 #!/usr/bin/python3
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  5.4 - What does a grid look like without a model?
+# source:   wxPythonInAction-src/Chapter-05/gridNoModel.py
+# -----------------------------------------------------------------------------
+"""Nine rows of a baseball line-up, put in one cell at a time.
+
+Tkinter has no grid widget. A ttk.Treeview shows rows and columns and is as
+far as the standard library goes, which is far enough for this file and not
+far enough for the rest of the chapter. See README.md.
+"""
 import tkinter as tk
 from tkinter import ttk
 
+
+# Position, first name, last name. The 1984 Chicago Cubs, as in the book.
+LINE_UP = (("CF", "Bob", "Dernier"),
+           ("2B", "Ryne", "Sandberg"),
+           ("LF", "Gary", "Matthews"),
+           ("1B", "Leon", "Durham"),
+           ("RF", "Keith", "Moreland"),
+           ("3B", "Ron", "Cey"),
+           ("C", "Jody", "Davis"),
+           ("SS", "Larry", "Bowa"),
+           ("P", "Rick", "Sutcliffe"))
+
+COLUMNS = (("#0", "Position", 80),
+           ("first", "First", 110),
+           ("last", "Last", 110))
+
+
 class App(tk.Tk):
-    def __init__(self, *args, **kwargs):
+    """The line-up, shown and not editable."""
+
+    def __init__(self):
         super().__init__()
 
-        
         self.title("Grid")
-        self.init_ui()
 
-    def init_ui(self):
+        frm_main = ttk.Frame(self, padding=8)
+        frm_main.pack(fill=tk.BOTH, expand=True)
 
-        #tkinte doesn't have a grid widget but we can use the powerfull ttk.Treeview....
+        self.trv_line_up = ttk.Treeview(frm_main,
+                                        columns=[name for name, _, _
+                                                 in COLUMNS[1:]],
+                                        height=len(LINE_UP))
 
-        f = ttk.Frame(self, padding=8)
+        for name, heading, width in COLUMNS:
+            self.trv_line_up.heading(name, text=heading, anchor=tk.W)
+            self.trv_line_up.column(name, anchor=tk.W, width=width,
+                                    stretch=False)
 
-        cols = (["#0",'','w',False,50,50, 'gray'],
-                ["#1",'First','w',False,50,50],
-                ["#2",'Last','w',False,50,50],)
-        
-        self.MyGrid = self.get_tree(f, cols,10)
+        scrollbar = ttk.Scrollbar(frm_main, orient=tk.VERTICAL,
+                                  command=self.trv_line_up.yview)
+        self.trv_line_up.config(yscrollcommand=scrollbar.set)
 
-       
-        f.pack(fill=tk.BOTH,padx=5, pady=5, expand=1)
+        self.trv_line_up.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
         self.set_values()
 
-
-    def set_values(self,):
-
-        data = (("CF", "Bob", "Dernier"), ("2B", "Ryne", "Sandberg"),
-                ("LF", "Gary", "Matthews"), ("1B", "Leon", "Durham"),
-                ("RF", "Keith", "Moreland"), ("3B", "Ron", "Cey"),
-                ("C", "Jody", "Davis"), ("SS", "Larry", "Bowa"),
-                ("P", "Rick", "Sutcliffe"))
+    def set_values(self):
+        """One row per player. The wx original writes one cell at a time,
+        which is what the chapter is complaining about."""
+        for position, first, last in LINE_UP:
+            self.trv_line_up.insert("", tk.END, iid=position, text=position,
+                                    values=(first, last))
 
 
-        for i in data:
-            self.MyGrid.insert('', tk.END,
-                                       iid=i[0],
-                                       text=i[0],
-                                       values=(i[1],i[2]),)            
-
-
-
-    def get_tree(self, container, cols, size=None, show=None):
-
-        ttk.Style().configure("Treeview.Heading", font=('Helvetica', 12, 'bold' ))
-
-        headers = []
-
-        for col in cols:
-            headers.append(col[1])
-        del headers[0]
-
-        if show is not None:
-            w = ttk.Treeview(container,show=show)
-
-        else:
-            w = ttk.Treeview(container,)
-              
-        w['columns']=headers
-          
-        for col in cols:
-            w.heading(col[0], text=col[1], anchor=col[2],)
-            w.column(col[0], anchor=col[2], stretch=col[3],minwidth=col[4], width=col[5])
-           
-        sb = ttk.Scrollbar(container)
-        sb.configure(command=w.yview)
-        w.configure(yscrollcommand=sb.set)
-
-
-        w.pack(side=tk.LEFT, fill=tk.BOTH, expand =1)
-        sb.pack(fill=tk.Y, expand=1)
-
-        return w        
-                        
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = App()
     app.mainloop()

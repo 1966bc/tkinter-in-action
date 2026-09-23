@@ -1,78 +1,95 @@
 #!/usr/bin/python3
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  5.2 - What is refactoring and why is it worth doing?
+# source:   wxPythonInAction-src/Chapter-05/badExample.py
+# -----------------------------------------------------------------------------
+"""The same window as goodExample.py, written the way one writes it first.
+
+Everything in __init__, one line per widget, the menu spelled out item by
+item. It works. Read it next to goodExample.py and then decide.
+"""
 import tkinter as tk
 
-class RefactorExample(tk.Frame):
-    def __init__(self,parent ):
+
+class App(tk.Tk):
+    """A window built entirely in its own constructor."""
+
+    def __init__(self):
         super().__init__()
 
-        
-        self.parent = parent
+        self.title("Refactor Example")
+        self.geometry("340x200")
+        self.protocol("WM_DELETE_WINDOW", self.on_close_window)
 
-        panel = tk.Frame(self.parent,  bg="white")
+        frm_panel = tk.Frame(self, background="white")
+        frm_panel.pack(fill=tk.BOTH, expand=True)
 
-        prevButton = tk.Button(panel, text="<< PREV",  command=self.OnPrev).place(x=50, y=0)
-        nextButton = tk.Button(panel, text="NEXT >>",command=self.OnNext ).place(x=130, y=0)
-        
-        
-        panel.pack(fill=tk.BOTH, expand=1)
-     
+        btn_prev = tk.Button(frm_panel, text="<< PREV", command=self.on_prev)
+        btn_prev.place(x=80, y=0)
 
-        m_main = tk.Menu(self.master, bd = 1)
-        m_file = tk.Menu(m_main, tearoff=0, bd = 1)
-        s_menu = tk.Menu(m_file)
-        m_edit = tk.Menu(m_main, tearoff=0, bd=1)
+        btn_next = tk.Button(frm_panel, text="NEXT >>", command=self.on_next)
+        btn_next.place(x=160, y=0)
 
-        m_main.add_cascade(label="File", underline=0, menu=m_file)
-        m_main.add_cascade(label="Edit", underline=0, menu=m_edit)
-        m_file.add_command(label="Open", underline=0, command=self.OnOpen)
-        m_file.add_command(label="Quit", underline=0, command=self.OnCloseWindow)
+        mnu_bar = tk.Menu(self)
 
-        m_edit.add_command(label="Copy",underline=0,command=self.OnCopy)
-        m_edit.add_command(label="Cut",underline=1,command=self.OnCut)
-        m_edit.add_command(label="Paste",underline=0,command=self.OnPaste)
-        
-        
-        self.master.config(menu=m_main)
+        mnu_file = tk.Menu(mnu_bar, tearoff=0)
+        mnu_file.add_command(label="Open", underline=0, command=self.on_open)
+        mnu_file.add_command(label="Quit", underline=0,
+                             command=self.on_close_window)
+        mnu_bar.add_cascade(label="File", underline=0, menu=mnu_file)
+
+        mnu_edit = tk.Menu(mnu_bar, tearoff=0)
+        mnu_edit.add_command(label="Copy", underline=0, command=self.on_copy)
+        mnu_edit.add_command(label="Cut", underline=1, command=self.on_cut)
+        mnu_edit.add_command(label="Paste", underline=0, command=self.on_paste)
+        mnu_bar.add_cascade(label="Edit", underline=0, menu=mnu_edit)
+
+        self.config(menu=mnu_bar)
+
+        lbl_first = tk.Label(frm_panel, text="First Name", background="white")
+        lbl_first.place(x=10, y=50)
+
+        ent_first = tk.Entry(frm_panel, width=14)
+        ent_first.place(x=80, y=50)
+
+        lbl_last = tk.Label(frm_panel, text="Last Name", background="white")
+        lbl_last.place(x=10, y=80)
+
+        ent_last = tk.Entry(frm_panel, width=14)
+        ent_last.place(x=80, y=80)
+
+    def on_prev(self):
+        """Nothing yet. The chapter is about the shape, not the work."""
+        pass
+
+    def on_next(self):
+        """Nothing yet."""
+        pass
+
+    def on_open(self):
+        """Nothing yet."""
+        pass
+
+    def on_copy(self):
+        """Nothing yet."""
+        pass
+
+    def on_cut(self):
+        """Nothing yet."""
+        pass
+
+    def on_paste(self):
+        """Nothing yet."""
+        pass
+
+    def on_close_window(self):
+        """Shut the window."""
+        self.destroy()
 
 
-        static = tk.Label(panel, text = "First Name", bg="white").place(x=10, y=50)
-        #tk.Entry doesn't have property of "height"
-        text = tk.Entry(panel, width=10, bg="white").place(x=80, y=50)
-
-        static2 = tk.Label(panel, text = "Last Name", bg="white").place(x=10, y=80)
-        #tk.Entry doesn't have property of "height"
-        text2 = tk.Entry(panel, width=10, bg="white").place(x=80, y=80)
-        
-        firstButton = tk.Button(panel, text="FIRST",  command=self.OnFirst).place(x=0, y=0)
-        lastButton = tk.Button(panel, text="LAST",  command=self.OnLast).place(x=210, y=0)
-
-        m_edit.add_separator()
-        m_edit.add_command(label="Options", underline=0, command=self.OnOptions)
-
-
-    def OnPrev(self, event): pass
-    def OnNext(self, event): pass
-    def OnLast(self, event): pass
-    def OnFirst(self, event): pass
-    def OnOpen(self, event): pass
-    def OnCopy(self, event): pass
-    def OnCut(self, event): pass
-    def OnPaste(self, event): pass
-    def OnOptions(self, event): pass
-        
-
-    def OnCloseWindow(self,):
-        self.master.destroy()  
-
-
-def main():
-
-    app = tk.Tk()
-    app.geometry("340x200")
-    app.title('Refactor Example')
-    frame = RefactorExample(app)
+if __name__ == "__main__":
+    app = App()
     app.mainloop()
-
-
-if __name__ == '__main__':
-    main()
