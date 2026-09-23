@@ -94,26 +94,31 @@ class TestChapter10(unittest.TestCase):
                          "normal")
 
     def test_an_accelerator_is_only_a_label_unless_it_is_bound(self):
-        """The trap of the chapter. The option draws Ctrl-A on the menu
-        and does not make it happen; the binding is what makes it happen.
+        """The trap of the chapter. accelerator= draws Ctrl-A down the
+        side of the menu and does not make it happen; a binding does.
 
-        The claim is tested by looking for the binding and then running
-        it, rather than by sending a synthetic Control-a. A key event has
-        to be delivered by the X server to a window that has the focus,
-        and under a headless display it is not - which was found by
-        watching this pass here and fail in the workflow.
+        Both halves are checked, and neither by sending a synthetic
+        Control-a: a key event has to be delivered by the X server to a
+        window that has the focus, and under a headless display it is
+        not. That was found by watching this pass here and fail in the
+        workflow, which is what the workflow is for.
         """
         import with_accelerator
 
         self.app = with_accelerator.App()
         self.app.update()
 
+        menu = self.app.nametowidget(self.app.cget("menu"))
+        mnu_file = self.app.nametowidget(menu.entrycget(0, "menu"))
+
+        # The label half: the menu says Ctrl-A.
+        self.assertEqual(str(mnu_file.entrycget("Accelerated",
+                                                "accelerator")), "Ctrl-A")
+
+        # And the half that does the work: something is bound to it.
         self.assertNotEqual(self.app.bind_all("<Control-a>"), "")
 
-        self.app.tk.call("event", "generate", self.app, "<Control-a>",
-                         "-when", "now")
-        self.app.update()
-
+        mnu_file.invoke("Accelerated")
         self.assertIn("Accelerated", self.app.lbl_said.cget("text"))
 
     def test_each_item_knows_which_one_it_is(self):

@@ -4,7 +4,7 @@ The source code of *wxPython in Action* rewritten in Tkinter, chapter by
 chapter and file by file — and a record of what came across, what needed
 three options where there was one, and what did not arrive at all.
 
-![Sketch, the running example of chapter 6](Chapter-06/figures/example7.png)
+![The radar chart of chapter 12](Chapter-12/figures/radargraph.png)
 
 ## What this is
 
@@ -40,9 +40,10 @@ Every one of these is an example in this repository, photographed by
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="Chapter-06/figures/example7.png" width="100%"><br>
-<sub><b>chapter 6</b> — Sketch, finished: a canvas, a control panel, a
-toolbar of drawn swatches, and no double buffering anywhere</sub>
+<img src="Chapter-08/figures/splitter.png" width="100%"><br>
+<sub><b>chapter 8</b> — two panes and a bar between them; a ttk.PanedWindow
+cannot be turned, so the menu that splits the other way builds a new
+one</sub>
 </td>
 <td width="50%" align="center">
 <img src="Chapter-12/figures/radargraph.png" width="100%"><br>
@@ -160,6 +161,50 @@ looks like an answer and is not — and it is what somebody choosing between
 the two actually needs.
 
 Each chapter's `README.md` has the list for that chapter.
+
+
+## The other side of it: a widget is easy to build
+
+The section above is only half an argument. The other half is that when
+Tkinter has not got something, **making it is unusually cheap** — and that
+is not a consolation, it follows from the same design.
+
+A Tk widget is a `Frame` with things in it. There is no widget class
+hierarchy to join, no platform whose conventions have to be satisfied, no
+paint cycle to implement, no resource to register. A new widget composes
+existing ones and inherits their behaviour for nothing: the keyboard
+works, the theme applies, `place`, `pack` and `grid` accept it, and it can
+be bound to like anything else.
+
+This repository is the evidence rather than the claim. About twenty
+widgets and dialogs were built in the course of translating the book,
+none of them long:
+
+| | where |
+|---|---|
+| `RadioBox`, `SimpleCombo` | chapter 7, where `wx.RadioBox` and `CB_SIMPLE` have no counterpart |
+| `ScrolledWindow`, `MiniFrame`, `ToolTip` | chapter 8 |
+| `ProgressBox`, `SingleChoiceDialog`, `ImageDialog`, `TipDialog`, `Wizard` | chapter 9 |
+| `ShellWindow`, `NamespaceWindow` | chapter 4 — a Python prompt inside a running program |
+| `OutputWindow` | chapter 2 — where `print()` goes when there is no terminal |
+| `ControlPanel`, `Splash`, `SketchWindow` | chapter 6 |
+| `RadarGraph` | chapter 12 |
+
+The wizard is eighty lines. The tooltip is fifty. The shell is fifty, and
+it runs statements against the window that is open beside it.
+
+And a real one, in use rather than in a book:
+[**Calendarium**](https://github.com/1966bc/Calendarium), a date picker.
+The standard library has no calendar widget, so this is one — small,
+self-contained, and used in the author's laboratory programs.
+
+**The cost is agreement, not capability.** wxPython ships one wizard and
+every wxPython program has the same one; wx.lib is full of contributed
+widgets that everybody shares. Here, everybody's wizard is their own, no
+two calendars are alike, and there is no equivalent body of agreed extra
+widgets to draw on. Whether that is a price or a freedom depends on
+whether you would rather learn somebody else's widget or write your own —
+and in Tkinter, writing your own is genuinely a morning's work.
 
 
 ## Running it
