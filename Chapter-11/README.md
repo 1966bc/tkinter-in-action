@@ -5,6 +5,13 @@ with `Add()`, give it options per child, attach it to the window with
 `SetSizer()` and ask the window to fit itself around it with `Fit()`. The
 layout is a thing you can hold, pass around and nest.
 
+![realworld](figures/realworld.png)
+
+*The account form. The two buttons are spaced by three empty grid
+columns with a weight, which is what wx's invisible spacer items
+become.*
+
+
 Tkinter has no such object. It has three **geometry managers**, and they are
 methods called on the child itself: `pack()`, `grid()`, `place()`. The layout
 is not a thing, it is an arrangement the parent remembers. Nothing is

@@ -3,6 +3,13 @@
 Three files. The chapter is about images and about drawing, and the two
 halves come out very differently.
 
+![radargraph](figures/radargraph.png)
+
+*The radar chart. Every circle, line, label and polygon is a canvas
+item carrying its own outline and fill - there is no current pen and
+no current brush to set and set back.*
+
+
 ## What Tkinter will read
 
 The wx original loads the same picture four times, as `.bmp`, `.gif`,

@@ -3,6 +3,14 @@
 Fifteen small files, one widget each. Most of them are a straight swap, and
 the table is the chapter:
 
+![generic button](figures/generic_button.png)
+
+*Nine buttons. In wx the bottom five come from `wx.lib.buttons`,
+a second family of buttons drawn in Python because the platform's
+cannot be restyled. Here they are all `tk.Button` and `tk.Checkbutton`
+with different options.*
+
+
 | wx | Tkinter |
 |---|---|
 | `wx.StaticText` | `tk.Label` |

@@ -2,6 +2,13 @@
 
 A `wx.ListCtrl` has four modes. This chapter translates one of them.
 
+![list report colsort](figures/list_report_colsort.png)
+
+*Report mode, sorted by clicking a heading. The arrow marks the
+sorted column, and the identifiers are in numeric order: sorted as
+text, 10 would come before 9.*
+
+
 | wx | Tkinter |
 |---|---|
 | `LC_REPORT` — rows and columns | `ttk.Treeview` |

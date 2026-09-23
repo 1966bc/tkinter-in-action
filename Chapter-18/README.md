@@ -3,6 +3,12 @@
 The book's last chapter is a collection of things that did not fit
 anywhere else. Three of them are in this one.
 
+![worker threads](figures/worker_threads.png)
+
+*Three workers reporting through a queue. Nothing in a worker thread
+touches a widget: the window drains the queue with `after()`.*
+
+
 | wx | Tkinter |
 |---|---|
 | `wx.TheClipboard` + `wx.TextDataObject` | `clipboard_clear`, `clipboard_append`, `clipboard_get` |

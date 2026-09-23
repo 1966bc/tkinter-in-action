@@ -4,6 +4,14 @@ Seven files that build one program, Sketch, a layer at a time. It is the
 book's running example and the best thing in it: each file is the previous
 one plus one idea.
 
+![example7](figures/example7.png)
+
+*Sketch, finished: the control panel on the left, the canvas on the
+right, and the toolbar swatches drawn rather than loaded. Compare it
+with the original by running
+`python3 tools/side_by_side.py Chapter-06 example7`.*
+
+
 This is also the chapter where the two toolkits draw differently, and the
 difference is worth more than the seven files put together.
 
