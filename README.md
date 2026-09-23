@@ -34,40 +34,29 @@ turned out to be wrong when measured, and the chapters say so.
 
 ## Gallery
 
-Every one of these is an example in this repository, photographed by
-`tools/capture.py` while it was running. Click one for the full size.
+The three windows above are on the cover. These are the rest of the range,
+each one an example in this repository, photographed by `tools/capture.py`
+while it was running.
 
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="Chapter-08/figures/splitter.png" width="100%"><br>
-<sub><b>chapter 8</b> — two panes and a bar between them; a ttk.PanedWindow
-cannot be turned, so the menu that splits the other way builds a new
-one</sub>
+<img src="Chapter-06/figures/example7.png" width="100%"><br>
+<sub><b>chapter 6</b> — Sketch: a canvas, a control panel and a toolbar of
+drawn swatches, with none of wx's double buffering because a canvas keeps
+what is on it</sub>
 </td>
 <td width="50%" align="center">
-<img src="Chapter-12/figures/radargraph.png" width="100%"><br>
-<sub><b>chapter 12</b> — a radar chart, where every item carries its own
-outline and fill instead of a pen and a brush being set</sub>
+<img src="Chapter-04/figures/pycrust-foundation-3.png" width="100%"><br>
+<sub><b>chapter 4</b> — a Python prompt holding the window open beside it.
+Fifty lines, on <code>code.InteractiveConsole</code></sub>
 </td>
 </tr>
 <tr>
-<td width="50%" align="center">
-<img src="Chapter-15/figures/tree_treelist.png" width="100%"><br>
-<sub><b>chapter 15</b> — a tree with a second column, which wx needs a
-contributed widget for</sub>
-</td>
 <td width="50%" align="center">
 <img src="Chapter-13/figures/list_report_etc.png" width="100%"><br>
-<sub><b>chapter 13</b> — report mode, striped with a tag because a
-Treeview has no rules to be asked for</sub>
-</td>
-</tr>
-<tr>
-<td width="50%" align="center">
-<img src="Chapter-11/figures/realworld.png" width="100%"><br>
-<sub><b>chapter 11</b> — a form whose buttons are spaced by empty grid
-columns with a weight, in place of wx's invisible spacers</sub>
+<sub><b>chapter 13</b> — report mode, striped with a tag, which is what a
+Treeview has instead of the rules a wx.ListCtrl can be asked for</sub>
 </td>
 <td width="50%" align="center">
 <img src="Chapter-07/figures/generic_button.png" width="100%"><br>
@@ -82,12 +71,14 @@ families and here are one widget with different options</sub>
 the thread that made the widgets may touch them</sub>
 </td>
 <td width="50%" align="center">
-<img src="Chapter-07/figures/list_box.png" width="100%"><br>
-<sub><b>chapter 7</b> — a list box, and a scrollbar, which in Tk are two
-widgets that have to be introduced to each other</sub>
+<img src="Chapter-08/figures/splitter.png" width="100%"><br>
+<sub><b>chapter 8</b> — two panes and a bar between them; a
+<code>ttk.PanedWindow</code> cannot be turned, so the menu that splits the
+other way builds a new one</sub>
 </td>
 </tr>
 </table>
+
 
 ## The chapters
 
