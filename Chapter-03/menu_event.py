@@ -1,37 +1,42 @@
 #!/usr/bin/python3
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  3.2 - How do I bind an event to a menu item?
+# source:   wxPythonInAction-src/Chapter-03/menu_event.py
+# -----------------------------------------------------------------------------
+"""A menu with one item, and the item does something.
+
+wx binds the frame to EVT_MENU for that item. A Tk menu item is given its
+command when it is made, and there is no event object at all.
+"""
 import tkinter as tk
 
-class MenuEventFrame(tk.Frame):
-    def __init__(self, ):
+
+class App(tk.Tk):
+    """A window whose only furniture is File / Exit."""
+
+    def __init__(self):
         super().__init__()
 
-        self.pack(fill=tk.BOTH, expand=1)
-        self.init_menu()
-   
+        self.title("Menus")
+        self.geometry("300x200")
 
-    def init_menu(self):
+        mnu_bar = tk.Menu(self)
+        mnu_file = tk.Menu(mnu_bar, tearoff=0)
 
-        m_main = tk.Menu(self.master, bd = 1)
-        m_file = tk.Menu(m_main, tearoff=0, bd = 1)
-        s_menu = tk.Menu(m_file)
+        mnu_bar.add_cascade(label="File", underline=0, menu=mnu_file)
+        mnu_file.add_command(label="Exit...", underline=1,
+                             command=self.on_close_me)
 
-        m_main.add_cascade(label="File", underline=0, menu=m_file)
-        m_file.add_command(label="Exit...", underline=0, command=self.OnCloseMe)
-        
-        self.master.config(menu=m_main)
+        self.config(menu=mnu_bar)
 
-    def OnCloseMe(self,):
-        self.master.destroy()  
+    def on_close_me(self):
+        """No event argument: nothing was asked and nothing is passed."""
+        self.destroy()
 
 
-def main():
-
-    app = tk.Tk()
-    app.geometry("300x100")
-    app.title('Menus')
-    frame = MenuEventFrame()
+if __name__ == "__main__":
+    app = App()
     app.mainloop()
-
-
-if __name__ == '__main__':
-    main()
