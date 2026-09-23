@@ -6,10 +6,11 @@ one plus one idea.
 
 ![example7](figures/example7.png)
 
-*Sketch, finished: the control panel on the left, the canvas on the
-right, and the toolbar swatches drawn rather than loaded. Compare it
-with the original by running
-`python3 tools/side_by_side.py Chapter-06 example7`.*
+*Sketch, the running example of chapter 6. The control panel on the
+left, the canvas on the right, and the toolbar swatches drawn rather
+than loaded.*
+
+
 
 
 This is also the chapter where the two toolkits draw differently, and the

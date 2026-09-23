@@ -7,9 +7,11 @@ layout is a thing you can hold, pass around and nest.
 
 ![realworld](figures/realworld.png)
 
-*The account form. The two buttons are spaced by three empty grid
-columns with a weight, which is what wx's invisible spacer items
-become.*
+*The account form that closes the chapter. The two buttons are spaced
+by three empty grid columns with a weight, which is what wx's
+invisible spacer items become.*
+
+
 
 
 Tkinter has no such object. It has three **geometry managers**, and they are

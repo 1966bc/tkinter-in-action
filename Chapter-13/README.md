@@ -2,11 +2,13 @@
 
 A `wx.ListCtrl` has four modes. This chapter translates one of them.
 
-![list report colsort](figures/list_report_colsort.png)
+![list report etc](figures/list_report_etc.png)
 
-*Report mode, sorted by clicking a heading. The arrow marks the
-sorted column, and the identifiers are in numeric order: sorted as
-text, 10 would come before 9.*
+*Report mode, with the menu that turns the headings off, switches
+between one selection and many, and stripes the rows. The stripes are
+a tag, which is what a Treeview has instead of rules.*
+
+
 
 
 | wx | Tkinter |

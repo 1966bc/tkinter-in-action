@@ -3,12 +3,15 @@
 Fifteen small files, one widget each. Most of them are a straight swap, and
 the table is the chapter:
 
-![generic button](figures/generic_button.png)
+![list box](figures/list_box.png)
 
-*Nine buttons. In wx the bottom five come from `wx.lib.buttons`,
-a second family of buttons drawn in Python because the platform's
-cannot be restyled. Here they are all `tk.Button` and `tk.Checkbutton`
-with different options.*
+*A list box. wx.ListBox and tk.Listbox, and the only difference is
+that Tk's does not scroll by itself: a Listbox with no Scrollbar
+beside it shows what fits and says nothing about the rest.*
+
+
+
+
 
 
 | wx | Tkinter |

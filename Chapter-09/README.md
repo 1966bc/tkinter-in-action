@@ -4,6 +4,13 @@ Fifteen files. Six of the dialogs are in the standard library, six are not
 and are built here, and three are about checking what was typed, which the
 two toolkits do in genuinely different ways.
 
+![font box](figures/font_box.png)
+
+*The font chooser Tkinter has and does not offer. Tk grew one in 8.6
+and Python never wrapped it; it is reached through the interpreter,
+and it is not modal - it calls back each time a font is chosen.*
+
+
 | wx | Tkinter |
 |---|---|
 | `wx.MessageDialog`, `wx.MessageBox` | `messagebox.askyesno` and its family |

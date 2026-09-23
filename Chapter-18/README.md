@@ -6,7 +6,10 @@ anywhere else. Three of them are in this one.
 ![worker threads](figures/worker_threads.png)
 
 *Three workers reporting through a queue. Nothing in a worker thread
-touches a widget: the window drains the queue with `after()`.*
+touches a widget: the window drains the queue with after(), which is
+wx.CallAfter turned inside out.*
+
+
 
 
 | wx | Tkinter |

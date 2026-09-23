@@ -4,6 +4,13 @@ The book opens with the smallest program that puts a window on the screen,
 and the difference between the two toolkits is there in the first eight
 lines.
 
+![python compare](figures/python_compare.png)
+
+*A menu, a status bar and an about box. Two of the three are things
+Tkinter has: there is no status bar widget, and a sunken Label is
+what everybody makes one out of.*
+
+
 wxPython separates the **application** from the **window**. A `wx.App` is
 subclassed, `OnInit()` builds a `wx.Frame`, the frame is shown, the frame is
 named the top window, and `OnInit()` returns `True` to say that starting

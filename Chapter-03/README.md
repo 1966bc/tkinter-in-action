@@ -3,6 +3,13 @@
 wx and Tk agree on what an event is and disagree on almost everything about
 how it is said.
 
+![customEvent](figures/customEvent.png)
+
+*Both buttons pressed, and the window told - by a virtual event that
+rises to it through the bindtags. The count is in the title because
+the event itself cannot carry it.*
+
+
 | wx | Tkinter |
 |---|---|
 | `self.Bind(wx.EVT_BUTTON, handler, button)` | `tk.Button(..., command=handler)` |

@@ -4,6 +4,13 @@ Chapter 1 showed that `tk.Tk()` is the application and the first window at
 once. This chapter is about what that costs, because a wxPython application
 object is not only a place to start: it is a place to stand.
 
+![toolbar](figures/toolbar.png)
+
+*The three pieces of furniture a window is expected to have. wx makes
+two of them with a method call each; here the toolbar is a Frame of
+flat buttons and the status bar is a Label.*
+
+
 ## Four places to stand, and two
 
 wx gives an application four moments of its own.

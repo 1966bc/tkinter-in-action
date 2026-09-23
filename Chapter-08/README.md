@@ -3,6 +3,13 @@
 The chapter about windows themselves, and the one with the most dashes in
 its table.
 
+![splitter](figures/splitter.png)
+
+*Two panes with a bar between them. A ttk.PanedWindow is given its
+orientation when it is made and cannot be turned afterwards, so the
+menu that splits the other way builds a new one.*
+
+
 | wx | Tkinter |
 |---|---|
 | `wx.Frame` | `tk.Tk` for the first, `tk.Toplevel` for the rest |

@@ -4,6 +4,13 @@ This is the chapter that looked, from the file list, as though it would not
 translate at all. PyCrust is a wxPython thing: a shell, a namespace browser,
 a session log, wrapped in one window and shipped with the toolkit.
 
+![pycrust foundation 3](figures/pycrust-foundation-3.png)
+
+*A Python prompt holding the window that is open beside it. Fifty
+lines, on code.InteractiveConsole, because IDLE is a program and not
+a library.*
+
+
 It translates, once the right thing is noticed.
 
 **PyCrust is not a feature of wxPython. It is an application written in

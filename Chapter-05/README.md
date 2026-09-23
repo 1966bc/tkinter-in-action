@@ -4,6 +4,13 @@ The chapter where the book stops showing widgets and starts arguing about
 how to arrange a program. Almost none of it is about wxPython, which is why
 almost all of it translates.
 
+![modelExample](figures/modelExample.png)
+
+*Four buttons, two fields, and a model in between that knows nothing
+about either. Nothing wrote to the fields: the button set the model,
+the model said so, and the window read it back.*
+
+
 ## Two windows that look the same
 
 `badExample.py` and `goodExample.py` put the same window on the screen. The

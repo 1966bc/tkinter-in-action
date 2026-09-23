@@ -3,6 +3,13 @@
 Eleven files. All eleven translate, and most of them translate to the same
 sentence: it is a `tk.Menu`.
 
+![update ui](figures/update_ui.png)
+
+*A window whose Edit menu knows whether there is anything to edit.
+EVT_UPDATE_UI has no equivalent; postcommand is called just before a
+menu opens, which is the only moment the answer matters.*
+
+
 | wx | Tkinter |
 |---|---|
 | `wx.MenuBar` | `tk.Menu`, given to a window with `config(menu=...)` |

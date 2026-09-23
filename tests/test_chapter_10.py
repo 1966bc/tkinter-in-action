@@ -94,14 +94,24 @@ class TestChapter10(unittest.TestCase):
                          "normal")
 
     def test_an_accelerator_is_only_a_label_unless_it_is_bound(self):
-        """The trap of the chapter. The option draws Ctrl-A and does not
-        make it happen; the binding is what makes it happen."""
+        """The trap of the chapter. The option draws Ctrl-A on the menu
+        and does not make it happen; the binding is what makes it happen.
+
+        The claim is tested by looking for the binding and then running
+        it, rather than by sending a synthetic Control-a. A key event has
+        to be delivered by the X server to a window that has the focus,
+        and under a headless display it is not - which was found by
+        watching this pass here and fail in the workflow.
+        """
         import with_accelerator
 
         self.app = with_accelerator.App()
         self.app.update()
 
-        self.app.event_generate("<Control-a>")
+        self.assertNotEqual(self.app.bind_all("<Control-a>"), "")
+
+        self.app.tk.call("event", "generate", self.app, "<Control-a>",
+                         "-when", "now")
         self.app.update()
 
         self.assertIn("Accelerated", self.app.lbl_said.cget("text"))

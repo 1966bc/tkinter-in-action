@@ -32,6 +32,62 @@ than that — because then there is a mechanism underneath, and that is the
 interesting part. Three times in this project a claim that seemed obvious
 turned out to be wrong when measured, and the chapters say so.
 
+## Gallery
+
+Every one of these is an example in this repository, photographed by
+`tools/capture.py` while it was running. Click one for the full size.
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="Chapter-06/figures/example7.png" width="100%"><br>
+<sub><b>chapter 6</b> — Sketch, finished: a canvas, a control panel, a
+toolbar of drawn swatches, and no double buffering anywhere</sub>
+</td>
+<td width="50%" align="center">
+<img src="Chapter-12/figures/radargraph.png" width="100%"><br>
+<sub><b>chapter 12</b> — a radar chart, where every item carries its own
+outline and fill instead of a pen and a brush being set</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img src="Chapter-15/figures/tree_treelist.png" width="100%"><br>
+<sub><b>chapter 15</b> — a tree with a second column, which wx needs a
+contributed widget for</sub>
+</td>
+<td width="50%" align="center">
+<img src="Chapter-13/figures/list_report_etc.png" width="100%"><br>
+<sub><b>chapter 13</b> — report mode, striped with a tag because a
+Treeview has no rules to be asked for</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img src="Chapter-11/figures/realworld.png" width="100%"><br>
+<sub><b>chapter 11</b> — a form whose buttons are spaced by empty grid
+columns with a weight, in place of wx's invisible spacers</sub>
+</td>
+<td width="50%" align="center">
+<img src="Chapter-07/figures/generic_button.png" width="100%"><br>
+<sub><b>chapter 7</b> — nine buttons that in wx come from two different
+families and here are one widget with different options</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img src="Chapter-18/figures/worker_threads.png" width="100%"><br>
+<sub><b>chapter 18</b> — workers reporting through a queue, because only
+the thread that made the widgets may touch them</sub>
+</td>
+<td width="50%" align="center">
+<img src="Chapter-07/figures/list_box.png" width="100%"><br>
+<sub><b>chapter 7</b> — a list box, and a scrollbar, which in Tk are two
+widgets that have to be introduced to each other</sub>
+</td>
+</tr>
+</table>
+
 ## The chapters
 
 | | chapter | files | notes |
@@ -52,9 +108,59 @@ turned out to be wrong when measured, and the chapters say so.
 | 15 | Tree controls | 6/6 | a virtual tree is easy where a virtual list was impossible |
 | 18 | Other functionality | 3/8 | a queue in place of `wx.CallAfter` |
 
-Chapters 14, 16 and 17 — the grid control, HTML and printing — have no
-Tkinter equivalent at all and are not attempted. Each chapter's
-`README.md` says what was left out and why.
+## Why some examples are missing
+
+The counts above are not effort running out, and they are not a list of
+holes in Tkinter. They are what happens when two toolkits are built on
+different ideas.
+
+**wxPython wraps the platform's widgets and ships one for every job.** A
+grid, an HTML window, a printing framework, a wizard, a splash screen, a
+progress dialog, MDI, and a second family of buttons for when the
+platform's own cannot be restyled. The book has a chapter per widget
+because there is a widget per chapter.
+
+**Tk draws everything itself, from a smaller set of parts.** A canvas, a
+text widget, a tree, three geometry managers, tags, variables, virtual
+events. There are fewer of them and they are unusually deep — a `Text` has
+tags on every platform where wx has to ask its platform nicely, a canvas
+item is an object that can be moved and bound to a click, and a `Treeview`
+is a table and a tree at once.
+
+So the untranslated files fall into two kinds, and only one of them is a
+gap.
+
+**Where wx ships a widget and Tk expects you to assemble one**, the
+example is here, because it was assembled: the wizard, the progress
+dialog, the toolbar, the status bar, the tip of the day, the single-choice
+dialog, the tooltip, the scrolled frame, the shell. Tens of lines each,
+once. The real cost is not the lines — it is that wx ships one wizard and
+every wxPython program has the same one, while here everybody writes their
+own and no two are alike.
+
+**Where the underlying idea is absent there is nothing to assemble from.**
+Those are left out and named:
+
+- **chapter 14, the grid control.** No widget shows a rectangular array of
+  editable cells. A `Treeview` shows rows and columns and nothing in it
+  can be typed into; an `Entry` placed over a cell is what everybody
+  writes instead, and it is not a grid.
+- **chapter 16, HTML.** No HTML widget, so `wx.html.HtmlWindow` has
+  nowhere to go.
+- **chapter 17, printing.** No printing framework. `Canvas.postscript()`
+  writes out what is on a canvas, and that is all of it.
+- and inside translated chapters, the files about those same things: the
+  four grid files in chapter 5, icon and list and virtual mode in chapter
+  13, drag and drop and sound and XRC in chapter 18.
+
+The rule followed throughout is that **a file that could only be
+translated by pretending is left out and named**. A recorded *no*, with
+the reason and with what one does instead, is worth more than a file that
+looks like an answer and is not — and it is what somebody choosing between
+the two actually needs.
+
+Each chapter's `README.md` has the list for that chapter.
+
 
 ## Running it
 

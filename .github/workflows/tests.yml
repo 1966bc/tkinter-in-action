@@ -24,7 +24,7 @@ jobs:
       - name: Install Tk and a display to put windows on
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-tk xvfb
+          sudo apt-get install -y python3-tk python3-pil.imagetk xvfb
 
       - name: Run the tests
         run: xvfb-run -a python3 -m unittest discover -s tests -v

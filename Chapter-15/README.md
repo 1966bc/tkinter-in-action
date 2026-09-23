@@ -5,7 +5,9 @@ Six files, five of them translated, and the sixth is the interesting one.
 ![tree treelist](figures/tree_treelist.png)
 
 *A tree with a second column. wx needs a contributed widget for this,
-`wx.gizmos.TreeListCtrl`; a `ttk.Treeview` is already both.*
+wx.gizmos.TreeListCtrl; a ttk.Treeview is already both.*
+
+
 
 
 | wx | Tkinter |
