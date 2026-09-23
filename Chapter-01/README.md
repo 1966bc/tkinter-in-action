@@ -108,11 +108,17 @@ empty.
 In wx the bitmap is handed to the widget and the widget owns it. Nothing has
 to be remembered.
 
-**One repair to the original's habit.** The wx version opens `'wxPython.jpg'`
-by a bare name, which means the program only runs from the directory the file
-is in. Here the path is built from `__file__`, so the example runs from
-anywhere - which it has to, because every file in this project is meant to be
-run on its own.
+**One repair to the original's habit.** The wx version opens its picture by a
+bare name, which means the program only runs from the directory the file is
+in. Here the path is built from `__file__`, so the example runs from anywhere
+- which it has to, because every file in this project is meant to be run on
+its own.
+
+**And the picture is made rather than shipped.** Pillow draws it on the first
+run and saves it as a JPEG, which keeps the lesson rather than weakening it:
+Pillow writes a format that `PhotoImage` cannot read, and then Pillow has to
+be asked to read it back. A PNG would have been opened by Tk itself and there
+would be nothing left to demonstrate.
 
 Measured: the window comes out 524x125, the size of the image, once the
 Label is asked for `borderwidth=0` and `highlightthickness=0`. Without them

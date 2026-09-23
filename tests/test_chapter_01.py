@@ -88,11 +88,12 @@ class TestChapter01(unittest.TestCase):
         with the picture clipped by a pixel on each side."""
         import hello
 
-        self.app = hello.App(hello.IMAGE)
+        self.app = hello.App(hello.set_image(hello.IMAGE))
         self.app.update_idletasks()
 
         self.assertEqual((self.app.winfo_reqwidth(),
-                          self.app.winfo_reqheight()), (524, 125))
+                          self.app.winfo_reqheight()),
+                         (hello.WIDTH, hello.HEIGHT))
 
     def test_hello_keeps_a_reference_to_its_image(self):
         """The one that fails in silence. A widget does not own the image
@@ -103,20 +104,36 @@ class TestChapter01(unittest.TestCase):
         nothing in the log. Just an empty window."""
         import hello
 
-        self.app = hello.App(hello.IMAGE)
+        self.app = hello.App(hello.set_image(hello.IMAGE))
 
         self.assertTrue(hasattr(self.app, "photo"),
                         "the PhotoImage is not held anywhere")
         self.assertEqual(self.app.photo.width(), 524)
 
-    def test_hello_finds_its_picture_from_any_directory(self):
-        """The wx original opens 'wxPython.jpg' by a bare name and runs
-        only from the directory it sits in. This one is meant to be started
-        from anywhere, so the path is built from __file__."""
+    def test_hello_makes_its_own_picture_and_finds_it_anywhere(self):
+        """Two things at once.
+
+        The path is built from __file__, so the example runs from any
+        directory - the wx original opens its picture by a bare name and
+        runs only from the one it sits in.
+
+        And the picture is made rather than shipped, as a JPEG on
+        purpose: a PNG would be read by Tk itself and there would be
+        nothing left to demonstrate.
+        """
         import hello
 
         self.assertTrue(os.path.isabs(hello.IMAGE))
+        self.assertTrue(hello.IMAGE.endswith(".jpg"))
+
+        hello.set_image(hello.IMAGE)
         self.assertTrue(os.path.exists(hello.IMAGE))
+
+        # And Tk still cannot open it, which is the whole lesson. A
+        # PhotoImage lives inside an interpreter, so there has to be one
+        # before it can refuse.
+        self.app = tk.Tk()
+        self.assertRaises(tk.TclError, tk.PhotoImage, file=hello.IMAGE)
 
     def test_sample_reports_the_position_it_was_given(self):
         """Relative to the bound widget, which is what wx reports too.
