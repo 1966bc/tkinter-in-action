@@ -1,53 +1,71 @@
 #!/usr/bin/python3
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  1.6 - Why choose wxPython?
+# source:   wxPythonInAction-src/Chapter-01/python_compare.py
+# -----------------------------------------------------------------------------
+"""A window with a menu, a status bar and an about box.
+
+The example the book uses to show what a real toolkit gives you. Tkinter
+gives two of the three: there is no status bar widget, and a sunken Label is
+how one is made. See README.md.
+"""
 import tkinter as tk
-from tkinter import ttk
 from tkinter import messagebox
 
 
-class MyFrame(ttk.Frame):
-    def __init__(self, parent):
-        super().__init__()
+ABOUT_TITLE = "About Hello World"
+ABOUT_TEXT = "This is a wxPython Hello world sample"
 
-        self.parent = parent
-        self.init_menu()
-        self.init_status_bar()
+WELCOME = "Welcome to wxPython!"
 
-    def init_menu(self):
 
-        m_main = tk.Menu(self, bd = 1)
-        m_file = tk.Menu(m_main, tearoff=0, bd = 1)
-        s_menu = tk.Menu(m_file)
-
-        m_main.add_cascade(label="File", underline=0, menu=m_file)
-        m_file.add_command(label="About...",underline=0, command=self.OnAbout)
-        m_file.add_separator()
-        m_file.add_command(label="Exit", underline=0, command=self.parent.OnQuit)
-        
-        self.parent.config(menu=m_main)
-
-    def init_status_bar(self):
-
-        statusbar = tk.Label(self, text="Welcome to wxPython!", bd=1, relief=tk.SUNKEN, anchor=tk.W)
-        statusbar.pack(side=tk.BOTTOM, fill=tk.X)
-        
-    def OnAbout(self):
-        messagebox.showinfo("This is a wxPython Hello world sample", "Welcome to wxPython!", parent=self)
-  
-class MyApp(tk.Tk):
-    """Start here"""
+class App(tk.Tk):
+    """Hello World, with the furniture a window is expected to have."""
 
     def __init__(self):
         super().__init__()
 
-        self.title('Hello World')
-        self.geometry('450x340+50+60') 
-        self.protocol("WM_DELETE_WINDOW", self.OnQuit)
-        frame = MyFrame(self,)
-        frame.pack(fill=tk.BOTH, expand=1)
-        
-    def OnQuit(self):
-        self.destroy()               
-    
-if __name__ == '__main__':
-    app = MyApp()
+        self.title("Hello World")
+        self.geometry("450x340+50+60")
+
+        # The close button is not an event one can listen for: it is a
+        # message from the window manager, and this is where it is caught.
+        self.protocol("WM_DELETE_WINDOW", self.on_quit)
+
+        self.set_menu()
+        self.set_status_bar()
+
+    def set_menu(self):
+        """A File menu with About and Exit."""
+        mnu_bar = tk.Menu(self)
+        mnu_file = tk.Menu(mnu_bar, tearoff=0)
+
+        mnu_bar.add_cascade(label="File", underline=0, menu=mnu_file)
+        mnu_file.add_command(label="About...", underline=0,
+                             command=self.on_about)
+        mnu_file.add_separator()
+        mnu_file.add_command(label="Exit", underline=1, command=self.on_quit)
+
+        self.config(menu=mnu_bar)
+
+    def set_status_bar(self):
+        """What wx gets from CreateStatusBar(), made out of a Label."""
+        lbl_status = tk.Label(self, text=WELCOME, borderwidth=1,
+                              relief=tk.SUNKEN, anchor=tk.W)
+        lbl_status.pack(side=tk.BOTTOM, fill=tk.X)
+
+    def on_about(self):
+        """Say what this is."""
+        messagebox.showinfo(ABOUT_TITLE, ABOUT_TEXT, parent=self)
+
+    def on_quit(self):
+        """Close the window, and with it the program."""
+        self.destroy()
+
+
+if __name__ == "__main__":
+    app = App()
     app.mainloop()

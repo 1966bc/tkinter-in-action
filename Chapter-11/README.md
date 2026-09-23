@@ -144,7 +144,7 @@ made bigger.
 That turns the chapter around. The sizer that looks like the simple one,
 `wx.GridSizer`, is the one that needs work in Tkinter, because *every cell
 the same* is a promise Tk does not make. The one that sounds more elaborate,
-`wx.FlexGridSizer`, is Tkinter's ordinary behaviour with a name on it.
+`wx.FlexGridSizer`, is what `grid()` does when nothing is asked of it.
 
 ### resizeflexgridsizer.py
 
@@ -244,9 +244,9 @@ btnSizer.Add((20, 20), 1)
 ```
 
 An invisible child that exists only to take up room. Tkinter has no such
-thing and needs none: an empty grid column is already there, and giving it a
-weight makes it the spacer. Three empty columns with weight, two buttons in
-the columns between them, and no objects were created to hold nothing.
+object, and does not need one: an empty grid column exists whether or not
+anything is put in it, and giving it a weight makes it the spacer. Three
+empty columns with a weight, two buttons in the columns between them.
 
 ## What does not translate
 
