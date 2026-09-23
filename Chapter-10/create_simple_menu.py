@@ -1,43 +1,55 @@
 #!/usr/bin/python3
-import tkinter as tk
-from tkinter import messagebox
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  10.1 - How do I put a menu on the menu bar?
+# source:   wxPythonInAction-src/Chapter-10/create_simple_menu.py
+# -----------------------------------------------------------------------------
+"""A menu bar with one menu on it, and an item that does something.
 
-class MyFrame(tk.Frame):
-    def __init__(self, ):
+wx has wx.MenuBar and wx.Menu, two classes. Tkinter has tk.Menu, and the
+bar is a menu whose items happen to cascade. config(menu=...) is what
+makes one a bar - a menu given to a window that way is drawn along the
+top, and the same object given to tk_popup would appear at the pointer.
+"""
+import tkinter as tk
+
+
+class App(tk.Tk):
+    """A window with a menu bar."""
+
+    def __init__(self):
         super().__init__()
 
-        self.pack(fill=tk.BOTH, expand=1)
-        self.init_menu()
-   
+        self.title("Simple Menu")
+        self.geometry("320x120")
 
-    def init_menu(self):
+        mnu_bar = tk.Menu(self, tearoff=0)
 
-        m_main = tk.Menu(self.master, bd = 1)
-        m_file = tk.Menu(m_main, tearoff=0, bd = 1)
-        s_menu = tk.Menu(m_file)
+        mnu_simple = tk.Menu(mnu_bar, tearoff=0)
+        mnu_simple.add_command(label="Simple menu item",
+                               command=self.on_simple)
+        mnu_simple.add_separator()
+        mnu_simple.add_command(label="Exit", command=self.destroy)
 
-        m_main.add_cascade(label="Simple Menu", underline=0, menu=m_file)
-        m_file.add_command(label="Simple menu item", underline=0, command=self.OnSimple)
-        m_file.add_separator()
-        m_file.add_command(label="Exit", underline=0, command=self.OnExit)
-        
-        self.master.config(menu=m_main)
+        # underline is the ampersand of "E&xit": which letter is the one
+        # Alt reaches. wx counts it in the string, Tk counts it as a
+        # position, which means a translated label does not silently move
+        # the underline to the wrong letter.
+        mnu_bar.add_cascade(label="Simple Menu", underline=0,
+                            menu=mnu_simple)
 
-    def OnSimple(self):
-        messagebox.showwarning("", "You selected the simple menu item",)
-        
-    def OnExit(self,):
-        self.master.destroy()  
+        self.config(menu=mnu_bar)
+
+        self.lbl_said = tk.Label(self, text="Nothing chosen yet.")
+        self.lbl_said.pack(expand=True)
+
+    def on_simple(self):
+        """Say that it was chosen."""
+        self.lbl_said.config(text="Simple menu item was chosen.")
 
 
-def main():
-
-    app = tk.Tk()
-    app.geometry("300x100")
-    app.title('Simple Menu Example')
-    frame = MyFrame()
+if __name__ == "__main__":
+    app = App()
     app.mainloop()
-
-
-if __name__ == '__main__':
-    main()
