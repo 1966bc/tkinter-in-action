@@ -1,0 +1,16 @@
+# One tip per line. Blank lines and lines starting with # are skipped.
+A Tkinter widget does not own the Python object it was given: a PhotoImage
+or a StringVar held in a local variable is collected, and the widget goes
+quietly blank.
+grid() and pack() and place() all return None. Build the widget on one
+line and place it on the next.
+A repeating after() outlives the window that asked for it. Cancel it in
+destroy(), or Tk will complain about an invalid command name from inside
+its own event loop.
+ttk is the themed set and tk is the older one. Prefer ttk, except for
+tk.Scale, which has tick marks and a value on it where ttk.Scale has
+neither.
+event_generate on a widget that has not been mapped yet is dropped in
+silence. Let the window through an update() first.
+A tk.Text has tags. A tag is a name for a range, and it can carry a font,
+a colour, a margin, a binding, and be asked where it is.

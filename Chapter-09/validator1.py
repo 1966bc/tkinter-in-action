@@ -1,73 +1,105 @@
 #!/usr/bin/python3
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  9.9 - How do I check what was typed?
+# source:   wxPythonInAction-src/Chapter-09/validator1.py
+# -----------------------------------------------------------------------------
+"""Three fields that must not be empty when OK is pressed.
+
+wx attaches a validator object to each field. Tkinter has no such object
+and does not need one here: a dialog that knows what it wants can say so
+in one method. See README.md.
+"""
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import simpledialog
 
-about_txt = """\
-The validator used in this example will ensure that the text
-controls are not empty when you press the Ok button, and
-will not let you leave if any of the Validations fail."""
 
-class MyDialog:
+ABOUT = ("The check in this example makes sure the fields are not empty\n"
+         "when OK is pressed, and will not let you leave if one is.")
+
+FIELDS = ("Name", "Email", "Phone")
+
+EMPTY = "pink"
+
+
+class MyDialog(simpledialog.Dialog):
+    """A form that refuses to close with an empty field in it."""
+
     def __init__(self, parent):
-        super().__init__()
+        self.entries = {}
+        self.answers = None
 
-        parent.title('Validators: validating')
+        super().__init__(parent, "Validators: validating")
 
-        
-        self.panel = tk.Frame()
-        r =0
-        about = tk.Label(self.panel, text=about_txt).grid(row=r, column=0, columnspan=2,sticky=tk.W)
+    def body(self, master):
+        """A caption and a field for each name."""
+        lbl_about = tk.Label(master, text=ABOUT, justify=tk.LEFT)
+        lbl_about.grid(row=0, column=0, columnspan=2, sticky=tk.W, pady=5)
 
-        r +=1
-        name_l = tk.Label(self.panel, text="Name:").grid(row=r, column=0, sticky=tk.W)
+        for index, name in enumerate(FIELDS):
+            lbl_field = tk.Label(master, text=name + ":")
+            lbl_field.grid(row=index + 1, column=0, sticky=tk.W, pady=2)
 
-        r +=1
-        name_t = tk.Entry(self.panel, bg="white")
-        name_t.grid(row=r, column=1, sticky=tk.W+tk.E)
-    
-        r +=1
-        name_l = tk.Label(self.panel, text="Email:",).grid(row=r, column=0, sticky=tk.W)
+            entry = tk.Entry(master, width=24)
+            entry.grid(row=index + 1, column=1, sticky=tk.E + tk.W, pady=2)
 
-        r +=1
-        email_t = tk.Entry(self.panel, bg="white")
-        email_t.grid(row=r, column=1, sticky=tk.W+tk.E)
+            self.entries[name] = entry
 
-        r +=1
-        phone_l = tk.Label(self.panel, text="Phone:",).grid(row=r, column=0, sticky=tk.W)
+        return self.entries[FIELDS[0]]
 
-        r +=1
-        phone_t = tk.Entry(self.panel, bg="white")
-        phone_t.grid(row=r, column=1, sticky=tk.W+tk.E)
+    def validate(self):
+        """Called on OK. Returning false keeps the dialog open.
 
-        r +=1
-        tk.Button(self.panel, text="OK", width = 8, command=self.OnSave).grid(row=r, column=1, sticky=tk.W, padx=5)
-        tk.Button(self.panel, text="Cancel", width = 8).grid(row=r, column=1,sticky=tk.E, padx=5)
+        wx asks each validator in turn and stops at the first that
+        refuses. This is the same walk, and it is in the dialog because
+        that is what knows that these three fields go together.
+        """
+        wrong = None
 
-        self.panel.pack(fill=tk.BOTH, expand=1)
+        for name in FIELDS:
+            entry = self.entries[name]
+
+            if entry.get().strip():
+                entry.config(background="white")
+            else:
+                entry.config(background=EMPTY)
+
+                if wrong is None:
+                    wrong = name
+
+        if wrong is not None:
+            messagebox.showerror("Error", "This field must contain "
+                                          "some text!", parent=self)
+            self.entries[wrong].focus_set()
+
+        return wrong is None
+
+    def apply(self):
+        """On OK, and only after validate() agreed."""
+        self.answers = {}
+
+        for name in FIELDS:
+            self.answers[name] = self.entries[name].get()
 
 
-    def OnSave(self, evt=None):
-
-        if self.on_fields_control(self) == False: return        
-
-
-    def on_fields_control(self, container):
-
-        msg = "Please fill all fields."
-
-        for w in self.panel.winfo_children():
-            if type(w) in(tk.Entry,):
-                if not w.get():
-                    w.focus()
-                    w.configure({"background": "pink"})
-                    messagebox.showwarning("Error", "This field must contain some text!",)
-                    return 0
-                             
-      
 def main():
-    app = tk.Tk()
-    MyDialog(app)
-    app.mainloop()
-    
-if __name__ == '__main__':
+    """Ask, and print what was given."""
+    root = tk.Tk()
+    root.withdraw()
+
+    dialog = MyDialog(root)
+
+    if dialog.answers is None:
+        print("Cancel")
+    else:
+        for name in FIELDS:
+            print("{}: {}".format(name, dialog.answers[name]))
+
+    root.destroy()
+
+
+if __name__ == "__main__":
     main()

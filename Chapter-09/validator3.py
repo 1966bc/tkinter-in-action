@@ -1,75 +1,106 @@
 #!/usr/bin/python3
-import tkinter as tk
-from tkinter import messagebox
+# -----------------------------------------------------------------------------
+# project:  tkinter-in-action
+# authors:  1966bc aka Giuseppe Costanzi
+# licence:  MIT, see LICENSE
+# chapter:  9.9 - How do I stop the wrong characters being typed?
+# source:   wxPythonInAction-src/Chapter-09/validator3.py
+# -----------------------------------------------------------------------------
+"""Fields that will not accept a letter, or will not accept a digit.
 
-about_txt = """\
-The validator used in this example will validate the input on the fly
-instead of waiting until the okay button is pressed.  The first field
-will not allow digits to be typed, the second will allow anything
-and the third will not allow alphabetic characters to be entered.
+This is the one wx has to fight for and Tkinter is built for. wx binds
+EVT_CHAR, decides, and either calls Skip() to let the character through or
+does not. A Tk Entry has validatecommand, whose whole purpose is to be
+asked before an edit happens and to be allowed to say no.
+
+    %P   what the field would say if the edit were allowed
+    %S   the text being inserted
+    %d   1 for an insertion, 0 for a deletion
+
+Returning false leaves the field exactly as it was. See README.md.
 """
+import tkinter as tk
+from tkinter import simpledialog
 
-class MyDialog:
+
+ABOUT = ("The first field will not accept letters, the second accepts\n"
+         "anything, and the third will not accept digits.")
+
+
+class MyDialog(simpledialog.Dialog):
+    """Three fields, two of them fussy."""
+
     def __init__(self, parent):
-        super().__init__()
+        self.entries = {}
+        self.answers = None
 
-        parent.title('Validators: validating')
+        super().__init__(parent, "Validators: validating on the fly")
 
-        self.name = tk.StringVar()
-        self.name.trace('w', self.validate_alpha)
+    def body(self, master):
+        """A caption and three fields with three different rules."""
+        lbl_about = tk.Label(master, text=ABOUT, justify=tk.LEFT)
+        lbl_about.grid(row=0, column=0, columnspan=2, sticky=tk.W, pady=5)
 
-        self.phone = tk.StringVar()
-        self.phone.trace('w', self.validate_isdigit)
-             
-        self.panel = tk.Frame()
-        r =0
-        about = tk.Label(self.panel, text=about_txt).grid(row=r, column=0, columnspan=2,sticky=tk.W)
+        self.set_field(master, 1, "Phone", self.get_no_letters())
+        self.set_field(master, 2, "Email", None)
+        self.set_field(master, 3, "Name", self.get_no_digits())
 
-        r +=1
-        name_l = tk.Label(self.panel, text="Name:").grid(row=r, column=0, sticky=tk.W)
+        return self.entries["Phone"]
 
-        r +=1
-        name_t = tk.Entry(self.panel, bg="white", textvariable = self.name)
-        name_t.grid(row=r, column=1, sticky=tk.W+tk.E)
-    
-        r +=1
-        name_l = tk.Label(self.panel, text="Email:",).grid(row=r, column=0, sticky=tk.W)
+    def set_field(self, master, row, name, rule):
+        """One caption and one field, with a rule or without."""
+        lbl_field = tk.Label(master, text=name + ":")
+        lbl_field.grid(row=row, column=0, sticky=tk.W, pady=2)
 
-        r +=1
-        email_t = tk.Entry(self.panel, bg="white")
-        email_t.grid(row=r, column=1, sticky=tk.W+tk.E)
+        entry = tk.Entry(master, width=24)
 
-        r +=1
-        phone_l = tk.Label(self.panel, text="Phone:",).grid(row=r, column=0, sticky=tk.W)
+        if rule is not None:
+            # register() gives Tcl a name for a Python function, and the
+            # %P is the substitution Tk fills in before calling it.
+            entry.config(validate="key",
+                         validatecommand=(self.register(rule), "%P"))
 
-        r +=1
-        phone_t = tk.Entry(self.panel, bg="white",  textvariable = self.phone)
-        phone_t.grid(row=r, column=1, sticky=tk.W+tk.E)
+        entry.grid(row=row, column=1, sticky=tk.E + tk.W, pady=2)
+        self.entries[name] = entry
 
-        r +=1
-        tk.Button(self.panel, text="OK", width = 8,).grid(row=r, column=1, sticky=tk.W, padx=5)
-        tk.Button(self.panel, text="Cancel", width = 8).grid(row=r, column=1,sticky=tk.E, padx=5)
+    def get_no_letters(self):
+        """A rule that refuses any edit leaving a letter in the field."""
+        def rule(proposed):
+            """True if the edit may happen."""
+            return not any(character.isalpha() for character in proposed)
 
-        self.panel.pack(fill=tk.BOTH, expand=1)
+        return rule
+
+    def get_no_digits(self):
+        """A rule that refuses any edit leaving a digit in the field."""
+        def rule(proposed):
+            """True if the edit may happen."""
+            return not any(character.isdigit() for character in proposed)
+
+        return rule
+
+    def apply(self):
+        """On OK."""
+        self.answers = {}
+
+        for name, entry in self.entries.items():
+            self.answers[name] = entry.get()
 
 
-    def validate_alpha(self, *args):
-        if not self.name.get().isalpha():
-            corrected = ''.join(filter(str.isalpha, self.name.get()))
-            self.name.set(corrected)
-
-    def validate_isdigit(self, *args):
-        if not self.phone.get().isdigit():
-            corrected = ''.join(filter(str.isdigit, self.phone.get()))
-            self.phone.set(corrected)                 
-
-
-  
-                             
 def main():
-    app = tk.Tk()
-    MyDialog(app)
-    app.mainloop()
-    
-if __name__ == '__main__':
+    """Ask, and print what got through."""
+    root = tk.Tk()
+    root.withdraw()
+
+    dialog = MyDialog(root)
+
+    if dialog.answers is None:
+        print("Cancel")
+    else:
+        print(dialog.answers)
+
+    root.destroy()
+
+
+if __name__ == "__main__":
     main()
